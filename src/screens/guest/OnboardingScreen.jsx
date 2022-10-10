@@ -99,7 +99,7 @@ const OnboardingScreens = ({ navigation }) => {
             style={[
               styles.indicator,
               currentSlideIndex == index && {
-                backgroundColor: "white",
+                backgroundColor: Colors.coklat[200],
                 width: 5,
                 height: 5,
                 borderRadius: 100,
@@ -125,7 +125,7 @@ const OnboardingScreens = ({ navigation }) => {
                   size={size}
                 />
               )}
-              textColor={Colors.primary[200]}
+              textColor={Colors.coklat[300]}
               mode="text"
               onPress={goToPreviousSlide}
             >
@@ -143,7 +143,7 @@ const OnboardingScreens = ({ navigation }) => {
               />
             )}
             mode="text"
-            textColor={Colors.primary[200]}
+            textColor={Colors.coklat[300]}
             contentStyle={{ flexDirection: "row-reverse" }}
             onPress={goToNextSlide}
           >
@@ -160,7 +160,7 @@ export default OnboardingScreens;
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    backgroundColor: Colors.background.secondary[500],
+    backgroundColor: "white",
   },
   title: {
     fontFamily: "Inter_700Bold",
@@ -168,11 +168,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 22,
     marginVertical: 20,
-    color: Colors.primary[200],
+    color: Colors.coklat[300],
   },
   subtitle: {
     fontFamily: "Inter_400Regular",
-    color: Colors.text.light,
+    color: Colors.coklat[200],
     textAlign: "center",
     fontSize: 13,
     maxWidth: "80%",

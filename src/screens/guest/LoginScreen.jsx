@@ -59,23 +59,24 @@ const LoginScreen = ({ navigation }) => {
         }));
       }
       setLoading(true);
-      const response = await login(inputs);
-      if (response?.error) {
-        setInputs((currInputs) => ({
-          ...currInputs,
-          email: { value: currInputs.email.value, error: response?.error },
-        }));
-      } else if (response?.user) {
-        setInputs((currInputs) => ({
-          ...currInputs,
-          email: { value: currInputs.email.value, error: "" },
-        }));
-        dispatch(
-          loginStore({
-            auth: response.user,
-          })
-        );
-      }
+      navigation.navigate("HomeScreen");
+      // const response = await login(inputs);
+      // if (response?.error) {
+      //   setInputs((currInputs) => ({
+      //     ...currInputs,
+      //     email: { value: currInputs.email.value, error: response?.error },
+      //   }));
+      // } else if (response?.user) {
+      //   setInputs((currInputs) => ({
+      //     ...currInputs,
+      //     email: { value: currInputs.email.value, error: "" },
+      //   }));
+      //   dispatch(
+      //     loginStore({
+      //       auth: response.user,
+      //     })
+      //   );
+      // }
       setLoading(false);
     });
   };
@@ -99,18 +100,18 @@ const LoginScreen = ({ navigation }) => {
             width: null,
           }}
         />
-        <View style={styles.inputRow}>
-          <Text
-            style={{
-              fontFamily: "Inter_700Bold",
-              fontSize: 22,
-              color: "white",
-            }}
-          >
-            Login
-          </Text>
-        </View>
         <View style={styles.cardContent}>
+          <View style={styles.inputRow}>
+            <Text
+              style={{
+                fontFamily: "Inter_700Bold",
+                fontSize: 22,
+                color: Colors.coklat[300],
+              }}
+            >
+              Login
+            </Text>
+          </View>
           <View style={styles.inputRow}>
             <TextInput
               label="Email"
@@ -155,7 +156,7 @@ const LoginScreen = ({ navigation }) => {
           <View style={[styles.inputRow, { marginTop: 30 }]}>
             <Button
               mode="contained"
-              buttonColor={loading ? Colors.primary[400] : Colors.primary[200]}
+              buttonColor={loading ? Colors.blue[100] : Colors.blue[300]}
               contentStyle={{ flexDirection: "row-reverse", padding: 5 }}
               style={{ flex: 1, borderRadius: 25 }}
               labelStyle={{ color: "white", fontSize: 20 }}
@@ -193,7 +194,7 @@ const LoginScreen = ({ navigation }) => {
           <View style={[styles.inputRow, { marginTop: 10 }]}>
             <Button
               mode="contained"
-              buttonColor={Colors.secondary}
+              buttonColor={Colors.blue[100]}
               contentStyle={{ flexDirection: "row-reverse", padding: 5 }}
               style={{ flex: 1, borderRadius: 25 }}
               labelStyle={{ color: "white" }}
@@ -222,8 +223,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   cardContent: {
-    paddingHorizontal: 0,
+    padding: 20,
     alignItems: "center",
+    backgroundColor: "white",
+    borderRadius: 26,
   },
   textInput: {
     flex: 1,

@@ -27,7 +27,7 @@ const RootNavigation = () => {
   return (
     <Provider>
       <NavigationContainer theme={MyTheme}>
-        {auth ? <AuthNavigations /> : <GuestNavigations />}
+        {<GuestNavigations />}
       </NavigationContainer>
     </Provider>
   );

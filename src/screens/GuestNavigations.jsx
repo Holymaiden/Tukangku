@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import OnboardingScreens from "./guest/OnboardingScreen";
 import LoginScreen from "./guest/LoginScreen";
 import SignupScreen from "./guest/SignupScreen";
+import HomeScreen from "./Auth/HomeScreen";
 const rightToLeftAnimation = {
   cardStyleInterpolator: ({ current, layouts }) => {
     return {
@@ -37,6 +38,11 @@ const GuestNavigations = () => {
       <Stack.Screen
         name="LoginScreen"
         component={LoginScreen}
+        options={rightToLeftAnimation}
+      />
+      <Stack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
         options={rightToLeftAnimation}
       />
     </Stack.Navigator>
