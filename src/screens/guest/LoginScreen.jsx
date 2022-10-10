@@ -8,6 +8,8 @@ import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { login } from "../../utils/backend/auth";
 import { login as loginStore } from "../../reducers/auth";
+import { widthDP, heightDP } from "../../utils/responsive";
+
 import { useDispatch } from "react-redux";
 const initialInputs = {
   email: { value: "", error: "" },
@@ -91,22 +93,25 @@ const LoginScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.rootContainer}>
       <View style={{ flex: 1, justifyContent: "center" }}>
-        <Image
-          source={require("../../../assets/logo.png")}
-          style={{
-            flex: 0.8,
-            height: null,
-            resizeMode: "contain",
-            width: null,
-          }}
-        />
+        <View style={{ flex: 1 }}>
+          <Image
+            source={require("../../../assets/logo.png")}
+            style={{
+              flex: 1,
+              resizeMode: "contain",
+              width: widthDP(40),
+              alignSelf: "center",
+            }}
+          />
+        </View>
         <View style={styles.cardContent}>
           <View style={styles.inputRow}>
             <Text
               style={{
                 fontFamily: "Inter_700Bold",
-                fontSize: 22,
-                color: Colors.coklat[300],
+                fontSize: heightDP(4),
+                color: "white",
+                marginVertical: heightDP(2),
               }}
             >
               Login
@@ -153,20 +158,20 @@ const LoginScreen = ({ navigation }) => {
           <HelperText type="error" visible={inputs.password.error !== ""}>
             {inputs.password.error}
           </HelperText>
-          <View style={[styles.inputRow, { marginTop: 30 }]}>
+          <View style={[styles.inputRow, { width: widthDP(55) }]}>
             <Button
               mode="contained"
               buttonColor={loading ? Colors.blue[100] : Colors.blue[300]}
               contentStyle={{ flexDirection: "row-reverse", padding: 5 }}
               style={{ flex: 1, borderRadius: 25 }}
-              labelStyle={{ color: "white", fontSize: 20 }}
+              labelStyle={{ color: "white", fontSize: heightDP(2.5) }}
               loading={loading}
               onPress={onSubmit}
             >
               Login
             </Button>
           </View>
-          <View style={[styles.inputRow, { marginTop: 10 }]}>
+          <View style={[styles.inputRow, { marginTop: heightDP(3) }]}>
             <IconButton
               icon={({ size, color }) => (
                 <Entypo name="facebook-with-circle" size={30} color="#4267B2" />
@@ -191,7 +196,16 @@ const LoginScreen = ({ navigation }) => {
               onPress={() => console.log("Pressed")}
             />
           </View>
-          <View style={[styles.inputRow, { marginTop: 10 }]}>
+          <View
+            style={[
+              styles.inputRow,
+              {
+                marginTop: heightDP(3),
+                width: widthDP(55),
+                alignSelf: "center",
+              },
+            ]}
+          >
             <Button
               mode="contained"
               buttonColor={Colors.blue[100]}
@@ -214,22 +228,28 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    backgroundColor: "#131921",
-    justifyContent: "center",
-    padding: 30,
+    backgroundColor: "white",
+    paddingVertical: heightDP(2),
+    paddingHorizontal: widthDP(7),
   },
   inputRow: {
     flexDirection: "row",
     justifyContent: "center",
   },
   cardContent: {
-    padding: 20,
+    flex: 2,
+    paddingVertical: heightDP(2),
+    paddingHorizontal: widthDP(5),
     alignItems: "center",
-    backgroundColor: "white",
+    backgroundColor: Colors.coklat[200],
     borderRadius: 26,
+    marginTop: heightDP(2),
   },
   textInput: {
     flex: 1,
-    marginHorizontal: 15,
+    marginHorizontal: widthDP(2),
+    borderRadius: 10,
+    textDecorationColor: "white",
+    backgroundColor: "white",
   },
 });

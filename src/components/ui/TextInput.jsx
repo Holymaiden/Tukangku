@@ -7,6 +7,7 @@ import {
   View,
 } from "react-native";
 import { Colors } from "../../constants/Colors";
+import { widthDP, heightDP } from "../../utils/responsive";
 const TextInput = (props) => {
   const [animation] = useState(new Animated.Value(0));
   const fadeIn = () => {
@@ -24,8 +25,9 @@ const TextInput = (props) => {
     }).start();
   };
   const textInputStyle = {
-    padding: 5,
-    marginVertical: 10,
+    paddingVertical: widthDP(3),
+    paddingHorizontal: widthDP(4),
+    marginVertical: widthDP(1),
     flexDirection: "row",
     backgroundColor: props.background && props.background,
     borderBottomWidth: 2,
@@ -59,6 +61,6 @@ export default TextInput;
 const styles = StyleSheet.create({
   textInput: {
     flex: 1,
-    color: "white",
+    color: "black",
   },
 });
